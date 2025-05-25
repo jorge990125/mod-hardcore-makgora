@@ -1,4 +1,4 @@
-# Simple Hardcore Mod
+# Hardcore Mod
 AzerothCore module to replicate hardcore mode. 
 Intended to be bizzlike but with some level configurations.
 
