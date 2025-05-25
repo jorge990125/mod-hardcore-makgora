@@ -18,6 +18,8 @@ Ejemplo
 ModHardcoreGMCanResurrect.Enable
 - Description: Enable GM resurrection.
 - Default: 0 - Disabled 1 - Enabled
+# Autor 
+Rexol -  https://github.com/jorge990125
 
 # Instalación
 Follow official guide: https://www.azerothcore.org/wiki/installation
