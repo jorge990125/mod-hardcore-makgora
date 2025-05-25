@@ -1,0 +1,46 @@
+#
+# Copyright (C) 2016+ AzerothCore <www.azerothcore.org>, released under GNU AGPL v3 license: https://github.com/azerothcore/azerothcore-wotlk/blob/master/LICENSE-AGPL3
+#
+
+[worldserver]
+
+########################################
+# Mod Hardcore Configuration
+########################################
+#
+#	 ModHardcore.Enable
+#        Description: Enable Hardcore Mod.
+#        Default:     0 - Disabled
+#                     1 - Enabled
+#
+#	 ModHardcoreMinLevel.Enable
+#	 ModHardcoreMaxLevel.Enable
+#        Description:	Disable Hardcore Level at Min-Max range.
+#        Default:		ModHardcoreMinLevel.Enable = 10
+#						ModHardcoreMaxLevel.Enable = 79
+#        Examples:		Set a range of level 10 to 79 to enable hardcore, so at level 1-9 and 80 hardcore is disabled.
+#						Set a range of level 1 to 80 to enable hardcore all levels.
+#
+#	 ModHardcoreGMCanResurrect.Enable
+#        Description:	Enable GM resurrection.
+#        Default:     	0 - Disabled
+#                     	1 - Enabled
+#
+#	 Reward.Enable
+#        Description:	Enable Reward for level 60,70,79.
+#        Default:     	0 - Disabled
+#                     	1 - Enabled
+#
+#	 Makgora.Enable
+#        Description:	Enable Makgora system duel.
+#        Default:     	0 - Disabled
+#                     	1 - Enabled
+#
+
+ModHardcore.Enable = 1
+ModHardcoreMinLevel.Enable = 1
+ModHardcoreMaxLevel.Enable = 79
+ModHardcoreGMCanResurrect.Enable = 0
+HardcoreMode.AnnounceEnable = 1
+Reward.Enable = 1
+Makgora.Enable = 1
