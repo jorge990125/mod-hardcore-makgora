@@ -52,8 +52,6 @@ public:
                 for (uint32 itemId : {57578, 39656 })
                 {
                     player->AddItem(itemId, 1);
-                    // if (Item* item = player->GetItemByEntry(itemId));
-                    // Esta linea, debe ser eliminada, o bien, falta trabajar algo...
                 }
 
                 // Lanzar el hechizo sin activar el GCD
@@ -88,7 +86,6 @@ public:
                 for (uint32 itemId : {57578, 43516 })
                 {
                     player->AddItem(itemId, 1);
-                    if (Item* item = player->GetItemByEntry(itemId));
                 }
 
                 // Lanzar el hechizo sin activar el GCD
@@ -124,7 +121,6 @@ public:
                 for (uint32 itemId : {57578, 19160 })
                 {
                     player->AddItem(itemId, 1);
-                    if (Item* item = player->GetItemByEntry(itemId));
                 }
 
                 // Lanzar el hechizo sin activar el GCD
