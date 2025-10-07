@@ -10,10 +10,9 @@ void AddSC_makgora();
 // Add all
 // cf. the naming convention https://github.com/azerothcore/azerothcore-wotlk/blob/master/doc/changelog/master.md#how-to-upgrade-4
 // additionally replace all '-' in the module folder name with '_' here
-void Addmod_hardcoreScripts()
+void Addmod_hardcore_makgoraScripts()
 {
     AddSC_mod_harcore();
     AddSC_mod_harcore_npc();
     AddSC_makgora();
 }
-
