@@ -55,7 +55,7 @@ public:
         return true;
     }
 
-    bool OnGossipSelect(Player* player, Creature* creature, uint32 sender, uint32 action) override
+    bool OnGossipSelect(Player* player, Creature* /*creature*/, uint32 /*sender*/, uint32 /*action*/) override
     {
         player->PlayerTalkClass->ClearMenus();
         return true;
@@ -67,7 +67,7 @@ class npc_hardcore_warning : public CreatureScript
 public:
     npc_hardcore_warning() : CreatureScript("npc_hardcore_warning") { }
 
-	struct npc_hardcore_warningAI : ScriptedAI
+    struct npc_hardcore_warningAI : ScriptedAI
     {
         npc_hardcore_warningAI(Creature* creature) : ScriptedAI(creature) { }
 
@@ -143,7 +143,7 @@ public:
                 uiDanceTimer -= diff;
         }
     };
-	
+    
     bool OnGossipHello(Player* player, Creature* creature) override
     {
         player->PlayerTalkClass->ClearMenus();
@@ -179,7 +179,7 @@ public:
         return true;
     }
 
-    bool OnGossipSelect(Player* player, Creature* creature, uint32 sender, uint32 action) override
+    bool OnGossipSelect(Player* player, Creature* creature, uint32 /*sender*/, uint32 action) override
     {
         player->PlayerTalkClass->ClearMenus();
 
@@ -196,7 +196,7 @@ public:
                 "¡Hazlo por el honor de los caídos!",
                 "¡La muerte es solo el comienzo de una gran aventura!",
                 "¡No hay vuelta atrás, aventurero! ¡Este es tu destino!"
-				"'Modo Hardcore... Solo los más fuertes sobreviven, marinero. Si caes, será el final de tu historia. ¡No te arrepientas ahora!'",
+                "'Modo Hardcore... Solo los más fuertes sobreviven, marinero. Si caes, será el final de tu historia. ¡No te arrepientas ahora!'",
                 "'Este es el verdadero reto, marinero. En el modo Hardcore, la muerte es definitiva. ¿Estás listo para desafiar la suerte?'",
                 "'¡Solo los valientes se atreven a jugar en este modo! La muerte te espera a la vuelta de cada esquina... ¡cuidado!'",
                 "'¡Nada de revivir aquí! Si caes, caes para siempre. Solo los más fuertes se quedan. ¿Lo eres tú?'"
@@ -240,7 +240,7 @@ public:
             creature->Say(rejectDialogs[randomIndex].c_str(), LANG_UNIVERSAL, NULL);
         }
         return true;
-    }	
+    }
 
     CreatureAI* GetAI(Creature* creature) const override
     {
