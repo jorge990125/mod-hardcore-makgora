@@ -39,9 +39,8 @@ public:
 
     void OnPlayerLevelChanged(Player* player, uint8 /*oldlevel*/) override
     {
-        if (getRewardEnabled(player))
+        if (getRewardEnabled())
         {
-
             if (player->GetLevel() == 60)
             {
                 constexpr uint32 TITLE_ID = 112; // ID real del título
@@ -322,7 +321,7 @@ private:
         return false;
     }
 
-    bool getRewardEnabled(Player* player)
+    bool getRewardEnabled()
     {
         if (!sConfigMgr->GetOption<bool>("Reward.Enable", false))
         {

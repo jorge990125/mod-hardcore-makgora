@@ -221,7 +221,6 @@ public:
         }
         else if (action == 3) // "Rechazar"
         {
-            uint32 rejectSpellId = 10308; // Reemplazar con el ID del hechizo de rechazo
             player->GetSession()->KickPlayer();
             CloseGossipMenuFor(player);
 
