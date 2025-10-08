@@ -13,6 +13,9 @@
 #        Default:     0 - Disabled
 #                     1 - Enabled
 #
+
+ModHardcore.Enable = 1
+
 #    ModHardcoreMinLevel.Enable
 #    ModHardcoreMaxLevel.Enable
 #        Description:   Disable Hardcore Level at Min-Max range.
@@ -21,15 +24,67 @@
 #        Examples:      Set a range of level 10 to 79 to enable hardcore, so at level 1-9 and 80 hardcore is disabled.
 #                       Set a range of level 1 to 80 to enable hardcore all levels.
 #
+
+ModHardcoreMinLevel.Enable = 1
+ModHardcoreMaxLevel.Enable = 79
+HardcoreMode.AnnounceEnable = 1
+
+#
 #    ModHardcoreGMCanResurrect.Enable
 #        Description:   Enable GM resurrection.
 #        Default:       0 - Disabled
 #                       1 - Enabled
+
+ModHardcoreGMCanResurrect.Enable = 0
+
 #
 #    Reward.Enable
 #        Description:   Enable Reward for level 60,70,79.
 #        Default:       0 - Disabled
 #                       1 - Enabled
+#
+
+Reward.Enable = 1
+
+#
+# Reward.TitleLevel60
+#     Description: Title ID to assign when the player reaches level 60.
+#     Default:     0 - Disabled (no title granted)
+#
+# Reward.TitleLevel70
+#     Description: Title ID to assign when the player reaches level 70.
+#     Default:     0 - Disabled (no title granted)
+#
+# Reward.TitleLevel80
+#     Description: Title ID to assign when the player reaches level 80.
+#     Default:     0 - Disabled (no title granted)
+#
+
+Reward.TitleLevel60 = 112
+Reward.TitleLevel70 = 86
+Reward.TitleLevel80 = 114
+
+#
+# Reward.Item1.Level60 / Reward.Item2.Level60
+#     Description: Item IDs to grant when the player reaches level 60.
+#     Default:     0 - Disabled (no item granted)
+#
+# Reward.Item1.Level70 / Reward.Item2.Level70
+#     Description: Item IDs to grant when the player reaches level 70.
+#     Default:     0 - Disabled (no item granted)
+#
+# Reward.Item1.Level80 / Reward.Item2.Level80
+#     Description: Item IDs to grant when the player reaches level 80.
+#     Default:     0 - Disabled (no item granted)
+#
+
+Reward.Item1.Level60 = 57578
+Reward.Item2.Level60 = 39656
+Reward.Item1.Level70 = 57578
+Reward.Item2.Level70 = 39656
+Reward.Item1.Level80 = 57578
+Reward.Item2.Level80 = 39656
+
 #
 #    Makgora.Enable
 #        Description:   Enable Makgora system duel.
@@ -37,10 +92,4 @@
 #                       1 - Enabled
 #
 
-ModHardcore.Enable = 1
-ModHardcoreMinLevel.Enable = 1
-ModHardcoreMaxLevel.Enable = 79
-ModHardcoreGMCanResurrect.Enable = 0
-HardcoreMode.AnnounceEnable = 1
-Reward.Enable = 1
 Makgora.Enable = 1
