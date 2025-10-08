@@ -24,9 +24,7 @@ public:
 class HardcoreMode : public PlayerScript
 {
 public:
-    explicit HardcoreMode() : PlayerScript("mod-hardcore")
-    {
-    }
+    explicit HardcoreMode() : PlayerScript("mod-hardcore") {}
 
     void OnPlayerLogin(Player* player) override
     {
@@ -41,9 +39,8 @@ public:
 
     void OnPlayerLevelChanged(Player* player, uint8 /*oldlevel*/) override
     {
-        if (getRewardEnabled(player))
+        if (getRewardEnabled())
         {
-
             if (player->GetLevel() == 60)
             {
                 constexpr uint32 TITLE_ID = 112; // ID real del título
@@ -52,7 +49,6 @@ public:
                 for (uint32 itemId : {57578, 39656 })
                 {
                     player->AddItem(itemId, 1);
-                    if (Item* item = player->GetItemByEntry(itemId));
                 }
 
                 // Lanzar el hechizo sin activar el GCD
@@ -64,7 +60,6 @@ public:
                     if (!player->HasTitle(titleEntry))
                     {
                         player->SetTitle(titleEntry);
-
                         ChatHandler(player->GetSession()).PSendSysMessage("|cff00ff00¡Felicidades, |cffffd700{} |cff00ff00!Has completado la segunda fase del desafio Hardcore y has recibido un título especial. Relajaos, tomad un cerveza y disfrutad del contenido de TBC.|r", player->GetName().c_str());
                     }
                     else
@@ -75,7 +70,6 @@ public:
                 else
                 {
                     ChatHandler(player->GetSession()).PSendSysMessage("|cffff0000Error: No se encontró el título con ID {}.|r", TITLE_ID);
-
                 }
             }
 
@@ -87,7 +81,6 @@ public:
                 for (uint32 itemId : {57578, 43516 })
                 {
                     player->AddItem(itemId, 1);
-                    if (Item* item = player->GetItemByEntry(itemId));
                 }
 
                 // Lanzar el hechizo sin activar el GCD
@@ -110,7 +103,6 @@ public:
                 else
                 {
                     ChatHandler(player->GetSession()).PSendSysMessage("|cffff0000Error: No se encontró el título con ID {}.|r", TITLE_ID);
-
                 }
             }
 
@@ -123,7 +115,6 @@ public:
                 for (uint32 itemId : {57578, 19160 })
                 {
                     player->AddItem(itemId, 1);
-                    if (Item* item = player->GetItemByEntry(itemId));
                 }
 
                 // Lanzar el hechizo sin activar el GCD
@@ -135,7 +126,6 @@ public:
                     if (!player->HasTitle(titleEntry))
                     {
                         player->SetTitle(titleEntry);
-
                         ChatHandler(player->GetSession()).PSendSysMessage("|cff00ff00¡Felicidades, |cffffd700{} |cff00ff00!Has completado el desafio Hardcore y has recibido un título especial. Relajaos, tomad un cerveza y disfrutad del contenido de Wotlk.|r", player->GetName().c_str());
                     }
                     else
@@ -146,7 +136,6 @@ public:
                 else
                 {
                     ChatHandler(player->GetSession()).PSendSysMessage("|cffff0000Error: No se encontró el título con ID {}.|r", TITLE_ID);
-
                 }
             }
         }
@@ -240,7 +229,7 @@ public:
             CharacterDatabase.Execute(
                 "INSERT INTO npc_hardcore_ranking (npc_id, kill_count) VALUES ({}, 1) "
                 "ON DUPLICATE KEY UPDATE kill_count = kill_count + 1", npcId);
-        }        
+        }
     }
 
     void OnPlayerResurrect(Player* player, float /*restore_percent*/, bool /*applySickness*/) override
@@ -252,18 +241,9 @@ public:
             player->GetSession()->KickPlayer("El jugador murió durante una sesión en modo hardcore.");
             return;
         }
-    } 
+    }
 
-    bool OnPlayerCanUseChat(Player* player, uint32 type, uint32 language, std::string& msg) override
-    {
-        if (getHardcoreEnabled(player) && player->isDead())
-        {
-            return false;
-        }
-        return true;
-    }    
-
-    bool OnPlayerCanUseChat(Player* player, uint32 type, uint32 language, std::string& msg, Player* receiver) override
+    bool OnPlayerCanUseChat(Player* player, uint32 /*type*/, uint32 /*language*/, std::string& /*msg*/) override
     {
         if (getHardcoreEnabled(player) && player->isDead())
         {
@@ -272,7 +252,7 @@ public:
         return true;
     }
 
-    bool OnPlayerCanUseChat(Player* player, uint32 type, uint32 language, std::string& msg, Group* group) override
+    bool OnPlayerCanUseChat(Player* player, uint32 /*type*/, uint32 /*language*/, std::string& /*msg*/, Player* /*receiver*/) override
     {
         if (getHardcoreEnabled(player) && player->isDead())
         {
@@ -281,7 +261,7 @@ public:
         return true;
     }
 
-    bool OnPlayerCanUseChat(Player* player, uint32 type, uint32 language, std::string& msg, Guild* guild) override
+    bool OnPlayerCanUseChat(Player* player, uint32 /*type*/, uint32 /*language*/, std::string& /*msg*/, Group* /*group*/) override
     {
         if (getHardcoreEnabled(player) && player->isDead())
         {
@@ -290,7 +270,7 @@ public:
         return true;
     }
 
-    bool OnPlayerCanUseChat(Player* player, uint32 type, uint32 language, std::string& msg, Channel* channel) override
+    bool OnPlayerCanUseChat(Player* player, uint32 /*type*/, uint32 /*language*/, std::string& /*msg*/, Guild* /*guild*/) override
     {
         if (getHardcoreEnabled(player) && player->isDead())
         {
@@ -299,7 +279,16 @@ public:
         return true;
     }
 
-    bool OnPlayerCanGroupInvite(Player* player, std::string& membername) override
+    bool OnPlayerCanUseChat(Player* player, uint32 /*type*/, uint32 /*language*/, std::string& /*msg*/, Channel* /*channel*/) override
+    {
+        if (getHardcoreEnabled(player) && player->isDead())
+        {
+            return false;
+        }
+        return true;
+    }
+
+    bool OnPlayerCanGroupInvite(Player* player, std::string& /*membername*/) override
     {
         if (getHardcoreEnabled(player) && player->isDead())
         {
@@ -309,7 +298,7 @@ public:
         return true;
     }
 
-    bool OnPlayerCanGroupAccept(Player* player, Group* group) override
+    bool OnPlayerCanGroupAccept(Player* player, Group* /*group*/) override
     {
         if (getHardcoreEnabled(player) && player->isDead())
         {
@@ -332,11 +321,11 @@ private:
         return false;
     }
 
-    bool getRewardEnabled(Player* player)
+    bool getRewardEnabled()
     {
         if (!sConfigMgr->GetOption<bool>("Reward.Enable", false))
         {
-			return false;
+            return false;
         }
         return true;
     }
@@ -345,9 +334,7 @@ private:
 class HardModeServerScript : ServerScript
 {
 public:
-    HardModeServerScript() : ServerScript("mod-hardcore")
-    {
-    }
+    HardModeServerScript() : ServerScript("mod-hardcore") {}
 
     bool CanPacketReceive(WorldSession* session, WorldPacket& packet) override
     {
@@ -389,7 +376,6 @@ public:
                     break;
             }
         }
-
         return true;
     }
 };

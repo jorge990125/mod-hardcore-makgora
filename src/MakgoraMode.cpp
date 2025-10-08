@@ -128,7 +128,7 @@ public:
         return makgoraCommandTable;
     }
 
-    static bool HandleMakgoraCommand(ChatHandler* handler, const char* args)
+    static bool HandleMakgoraCommand(ChatHandler* handler, const char* /*args*/)
     {
         // Verificar si el sistema Mak'Gora está habilitado
         if (!sConfigMgr->GetOption<bool>("Makgora.Enable", false))
