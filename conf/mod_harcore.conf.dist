@@ -51,17 +51,23 @@ Reward.Enable = 1
 #     Description: Title ID to assign when the player reaches level 60.
 #     Default:     0 - Disabled (no title granted)
 #
+
+Reward.TitleLevel60 = 112
+
+#
 # Reward.TitleLevel70
 #     Description: Title ID to assign when the player reaches level 70.
 #     Default:     0 - Disabled (no title granted)
+#
+
+Reward.TitleLevel70 = 86
+
 #
 # Reward.TitleLevel80
 #     Description: Title ID to assign when the player reaches level 80.
 #     Default:     0 - Disabled (no title granted)
 #
 
-Reward.TitleLevel60 = 112
-Reward.TitleLevel70 = 86
 Reward.TitleLevel80 = 114
 
 #
@@ -69,19 +75,25 @@ Reward.TitleLevel80 = 114
 #     Description: Item IDs to grant when the player reaches level 60.
 #     Default:     0 - Disabled (no item granted)
 #
+
+Reward.Item1.Level60 = 57578
+Reward.Item2.Level60 = 39656
+
+#
 # Reward.Item1.Level70 / Reward.Item2.Level70
 #     Description: Item IDs to grant when the player reaches level 70.
 #     Default:     0 - Disabled (no item granted)
+#
+
+Reward.Item1.Level70 = 57578
+Reward.Item2.Level70 = 39656
+
 #
 # Reward.Item1.Level80 / Reward.Item2.Level80
 #     Description: Item IDs to grant when the player reaches level 80.
 #     Default:     0 - Disabled (no item granted)
 #
 
-Reward.Item1.Level60 = 57578
-Reward.Item2.Level60 = 39656
-Reward.Item1.Level70 = 57578
-Reward.Item2.Level70 = 39656
 Reward.Item1.Level80 = 57578
 Reward.Item2.Level80 = 39656
 
