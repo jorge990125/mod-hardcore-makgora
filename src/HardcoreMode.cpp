@@ -43,18 +43,20 @@ public:
         {
             if (player->GetLevel() == 60)
             {
-                constexpr uint32 TITLE_ID = 112; // ID real del título
-                constexpr uint32 SPELL_ID = 44940; // ID del hechizo a lanzar
+                uint32 RewardTitleLevel60 = sConfigMgr->GetOption<uint32>("Reward.TitleLevel60", 112); //ID titulo				
+                uint32 item1level60 = sConfigMgr->GetOption<uint32>("Reward.Item1.Level60", 57578); //Itiem 1
+                uint32 item2level60 = sConfigMgr->GetOption<uint32>("Reward.Item2.Level60", 39656); //Itiem 2
 
-                for (uint32 itemId : {57578, 39656 })
+                constexpr uint32 SPELL_ID = 44940; // ID del hechizo a lanzar
+				
+                for (uint32 itemId : { item1level60, item2level60 })
                 {
                     player->AddItem(itemId, 1);
                 }
-
                 // Lanzar el hechizo sin activar el GCD
                 player->CastSpell(player, SPELL_ID, true);
 
-                if (CharTitlesEntry const* titleEntry = sCharTitlesStore.LookupEntry(TITLE_ID))
+                if (CharTitlesEntry const* titleEntry = sCharTitlesStore.LookupEntry(RewardTitleLevel60))
                 {
                     // Anuncio de agradecimiento
                     if (!player->HasTitle(titleEntry))
@@ -69,24 +71,26 @@ public:
                 }
                 else
                 {
-                    ChatHandler(player->GetSession()).PSendSysMessage("|cffff0000Error: No se encontró el título con ID {}.|r", TITLE_ID);
+                    ChatHandler(player->GetSession()).PSendSysMessage("|cffff0000Error: No se encontró el título con ID {}.|r", RewardTitleLevel60);
                 }
             }
 
             if (player->GetLevel() == 70)
             {
-                constexpr uint32 TITLE_ID = 86; // ID real del título
-                constexpr uint32 SPELL_ID = 44940; // ID del hechizo a lanzar
+                uint32 RewardTitleLevel70 = sConfigMgr->GetOption<uint32>("Reward.TitleLevel70", 86); //ID titulo
+                uint32 item1level70 = sConfigMgr->GetOption<uint32>("Reward.Item1.Level70", 57578); //Itiem 1
+                uint32 item2level70 = sConfigMgr->GetOption<uint32>("Reward.Item2.Level70", 39656); //Itiem 2
 
-                for (uint32 itemId : {57578, 43516 })
+                constexpr uint32 SPELL_ID = 44940; // ID del hechizo a lanzar
+				
+                for (uint32 itemId : { item1level70, item2level70 })
                 {
                     player->AddItem(itemId, 1);
                 }
-
                 // Lanzar el hechizo sin activar el GCD
                 player->CastSpell(player, SPELL_ID, true);
 
-                if (CharTitlesEntry const* titleEntry = sCharTitlesStore.LookupEntry(TITLE_ID))
+                if (CharTitlesEntry const* titleEntry = sCharTitlesStore.LookupEntry(RewardTitleLevel70))
                 {
                     // Anuncio de agradecimiento
                     if (!player->HasTitle(titleEntry))
@@ -102,25 +106,27 @@ public:
                 }
                 else
                 {
-                    ChatHandler(player->GetSession()).PSendSysMessage("|cffff0000Error: No se encontró el título con ID {}.|r", TITLE_ID);
+                    ChatHandler(player->GetSession()).PSendSysMessage("|cffff0000Error: No se encontró el título con ID {}.|r", RewardTitleLevel70);
                 }
             }
 
             // Verificar si el jugador alcanzó el nivel 80
             if (player->GetLevel() == 80)
             {
-                constexpr uint32 TITLE_ID = 114; // ID real del título
-                constexpr uint32 SPELL_ID = 44940; // ID del hechizo a lanzar
+                uint32 RewardTitleLevel80 = sConfigMgr->GetOption<uint32>("Reward.TitleLevel80", 114);  //ID titulo
+                uint32 item1level80 = sConfigMgr->GetOption<uint32>("Reward.Item1.Level80", 57578); //Itiem 1
+                uint32 item2level80 = sConfigMgr->GetOption<uint32>("Reward.Item2.Level80", 39656); //Itiem 2
 
-                for (uint32 itemId : {57578, 19160 })
+                constexpr uint32 SPELL_ID = 44940; // ID del hechizo a lanzar
+				
+                for (uint32 itemId : { item1level80, item2level80 })
                 {
                     player->AddItem(itemId, 1);
                 }
-
                 // Lanzar el hechizo sin activar el GCD
                 player->CastSpell(player, SPELL_ID, true);
 
-                if (CharTitlesEntry const* titleEntry = sCharTitlesStore.LookupEntry(TITLE_ID))
+                if (CharTitlesEntry const* titleEntry = sCharTitlesStore.LookupEntry(RewardTitleLevel80))
                 {
                     // Anuncio de agradecimiento
                     if (!player->HasTitle(titleEntry))
@@ -135,7 +141,7 @@ public:
                 }
                 else
                 {
-                    ChatHandler(player->GetSession()).PSendSysMessage("|cffff0000Error: No se encontró el título con ID {}.|r", TITLE_ID);
+                    ChatHandler(player->GetSession()).PSendSysMessage("|cffff0000Error: No se encontró el título con ID {}.|r", RewardTitleLevel80);
                 }
             }
         }
