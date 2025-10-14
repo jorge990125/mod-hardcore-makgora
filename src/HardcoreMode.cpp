@@ -365,6 +365,36 @@ public:
             auto opCode = packet.GetOpcode();
             switch (opCode)
             {
+                // mail
+                case CMSG_GET_MAIL_LIST:
+                case CMSG_SEND_MAIL:
+                case CMSG_MAIL_CREATE_TEXT_ITEM:
+                case CMSG_MAIL_DELETE:
+                case CMSG_MAIL_TAKE_ITEM:
+                case CMSG_MAIL_TAKE_MONEY:
+                case CMSG_MAIL_RETURN_TO_SENDER:
+                    ChatHandler(player->GetSession()).PSendSysMessage("No puedes usar tu bolsa de correo.");
+                    return false;
+
+                // ah
+                case CMSG_AUCTION_LIST_ITEMS:
+                case CMSG_AUCTION_LIST_BIDDER_ITEMS:
+                case CMSG_AUCTION_LIST_OWNER_ITEMS:
+                case CMSG_AUCTION_PLACE_BID:
+                case CMSG_AUCTION_REMOVE_ITEM:
+                case CMSG_AUCTION_SELL_ITEM:
+                    ChatHandler(player->GetSession()).PSendSysMessage("No puedes usar la subasta.");
+                    return false;
+
+                // guild
+                case CMSG_GUILD_BANKER_ACTIVATE:
+                case CMSG_GUILD_BANK_QUERY_TAB:
+                case CMSG_GUILD_BANK_DEPOSIT_MONEY:
+                case CMSG_GUILD_BANK_WITHDRAW_MONEY:
+                case CMSG_GUILD_BANK_BUY_TAB:
+                case CMSG_GUILD_BANK_UPDATE_TAB:
+                    ChatHandler(player->GetSession()).PSendSysMessage("No puedes usar el banco de la hermandad.");
+                    return false;
                 case SMSG_PRE_RESURRECT: // No idea
                 case CMSG_HEARTH_AND_RESURRECT: // No idea
                 case SMSG_RESURRECT_REQUEST: // No idea, maybe never executed here because you can't send resurrect to anybody while dead
