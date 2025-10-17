@@ -240,6 +240,11 @@ public:
 
     void OnPlayerResurrect(Player* player, float /*restore_percent*/, bool /*applySickness*/) override
     { // We keep this function just to prevent some exploits for reviving
+
+        // En la arena o en el campo de batalla, la exenci贸n debe concederse antes de la condici贸n getHardcoreEnabled.
+        if (player->IsGameMaster() || player->GetMap()->IsBattlegroundOrArena())
+            return;
+
         if (getHardcoreEnabled(player))
         {
             ChatHandler(player->GetSession()).PSendSysMessage("No puedes ser revivido. Mejora tus habilidades.");
