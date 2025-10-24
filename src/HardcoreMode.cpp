@@ -84,7 +84,7 @@ public:
                     if (!player->HasTitle(titleEntry))
                     {
                         player->SetTitle(titleEntry);
-                        ChatHandler(player->GetSession()).PSendSysMessage(ACORE_STRING_CLASSIC), player->GetName().c_str();
+                        ChatHandler(player->GetSession()).PSendSysMessage(ACORE_STRING_CLASSIC);
                     }
                     else
                     {
@@ -118,7 +118,7 @@ public:
                     if (!player->HasTitle(titleEntry))
                     {
                         player->SetTitle(titleEntry);
-                        ChatHandler(player->GetSession()).PSendSysMessage(ACORE_STRING_TBC), player->GetName().c_str();
+                        ChatHandler(player->GetSession()).PSendSysMessage(ACORE_STRING_TBC);
                     }
                     else
                     {
@@ -153,7 +153,7 @@ public:
                     if (!player->HasTitle(titleEntry))
                     {
                         player->SetTitle(titleEntry);
-                        ChatHandler(player->GetSession()).PSendSysMessage(ACORE_STRING_WOTLK), player->GetName().c_str();
+                        ChatHandler(player->GetSession()).PSendSysMessage(ACORE_STRING_WOTLK);
                     }
                     else
                     {
