@@ -84,7 +84,7 @@ public:
                     if (!player->HasTitle(titleEntry))
                     {
                         player->SetTitle(titleEntry);
-                        ChatHandler(player->GetSession()).PSendSysMessage(ACORE_STRING_CLASSIC);
+                        ChatHandler(player->GetSession()).PSendSysMessage(ACORE_STRING_CLASSIC, player->GetName().c_str());
                     }
                     else
                     {
@@ -93,7 +93,7 @@ public:
                 }
                 else
                 {
-                    ChatHandler(player->GetSession()).PSendSysMessage(ACORE_STRING_ERROR_TITLE), RewardTitleLevel60;
+                    ChatHandler(player->GetSession()).PSendSysMessage(ACORE_STRING_ERROR_TITLE, RewardTitleLevel60);
                 }
             }
 
@@ -118,7 +118,7 @@ public:
                     if (!player->HasTitle(titleEntry))
                     {
                         player->SetTitle(titleEntry);
-                        ChatHandler(player->GetSession()).PSendSysMessage(ACORE_STRING_TBC);
+                        ChatHandler(player->GetSession()).PSendSysMessage(ACORE_STRING_TBC, player->GetName().c_str());
                     }
                     else
                     {
@@ -127,7 +127,7 @@ public:
                 }
                 else
                 {
-                    ChatHandler(player->GetSession()).PSendSysMessage(ACORE_STRING_ERROR_TITLE), RewardTitleLevel70;
+                    ChatHandler(player->GetSession()).PSendSysMessage(ACORE_STRING_ERROR_TITLE, RewardTitleLevel70);
                 }
             }
 
@@ -153,7 +153,7 @@ public:
                     if (!player->HasTitle(titleEntry))
                     {
                         player->SetTitle(titleEntry);
-                        ChatHandler(player->GetSession()).PSendSysMessage(ACORE_STRING_WOTLK);
+                        ChatHandler(player->GetSession()).PSendSysMessage(ACORE_STRING_WOTLK, player->GetName().c_str());
                     }
                     else
                     {
@@ -162,7 +162,7 @@ public:
                 }
                 else
                 {
-                    ChatHandler(player->GetSession()).PSendSysMessage(ACORE_STRING_ERROR_TITLE), RewardTitleLevel80;
+                    ChatHandler(player->GetSession()).PSendSysMessage(ACORE_STRING_ERROR_TITLE, RewardTitleLevel80);
                 }
             }
         }
