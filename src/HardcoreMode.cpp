@@ -21,6 +21,28 @@ public:
     }
 };
 
+enum ardcoreModeAcoreString
+{
+    ACORE_STRING_DEATH = 36000,
+    ACORE_STRING_CLASSIC,
+    ACORE_STRING_TBC,
+    ACORE_STRING_WOTLK,
+    ACORE_STRING_TITLE,
+    ACORE_STRING_ERROR_TITLE,
+    ACORE_STRING_LEAVE_GROUP,
+    ACORE_STRING_GHOST,
+    ACORE_STRING_PLAYER_KILLED_HARDCORE,
+    ACORE_STRING_KILLED_HARDCORE,
+    ACORE_STRING_NOT_REVIVE,
+    ACORE_STRING_PLAYER_DEATH_HARDCORE,
+    ACORE_STRING_NOT_INVITED_GROUP,
+    ACORE_STRING_NOT_GROUP,
+    ACORE_STRING_MAIL,
+    ACORE_STRING_AUCTIONHOUSE,
+    ACORE_STRING_GUILD_BANK,
+    ACORE_STRING_GUILD_NOT_HERO
+};
+
 class HardcoreMode : public PlayerScript
 {
 public:
@@ -32,7 +54,7 @@ public:
         {
             if (player->isDead())
             {
-                ChatHandler(player->GetSession()).PSendSysMessage("Moriste durante una sesión en modo hardcore, así que ahora eres un fantasma permanente.Intenta asustar a los vivos.");
+                ChatHandler(player->GetSession()).PSendSysMessage(ACORE_STRING_DEATH);
             }
         }
     }
@@ -62,16 +84,16 @@ public:
                     if (!player->HasTitle(titleEntry))
                     {
                         player->SetTitle(titleEntry);
-                        ChatHandler(player->GetSession()).PSendSysMessage("|cff00ff00¡Felicidades, |cffffd700{} |cff00ff00!Has completado la segunda fase del desafio Hardcore y has recibido un título especial. Relajaos, tomad un cerveza y disfrutad del contenido de TBC.|r", player->GetName().c_str());
+                        ChatHandler(player->GetSession()).PSendSysMessage(ACORE_STRING_CLASSIC, player->GetName().c_str());
                     }
                     else
                     {
-                        ChatHandler(player->GetSession()).PSendSysMessage("|cffff0000Ya tienes este título.|r");
+                        ChatHandler(player->GetSession()).PSendSysMessage(ACORE_STRING_TITLE);
                     }
                 }
                 else
                 {
-                    ChatHandler(player->GetSession()).PSendSysMessage("|cffff0000Error: No se encontró el título con ID {}.|r", RewardTitleLevel60);
+                    ChatHandler(player->GetSession()).PSendSysMessage(ACORE_STRING_ERROR_TITLE, RewardTitleLevel60);
                 }
             }
 
@@ -96,17 +118,16 @@ public:
                     if (!player->HasTitle(titleEntry))
                     {
                         player->SetTitle(titleEntry);
-
-                        ChatHandler(player->GetSession()).PSendSysMessage("|cff00ff00¡Felicidades, |cffffd700{} |cff00ff00!Has completado el desafio Hardcore y has recibido un título especial. Relajaos, tomad un cerveza y disfrutad del contenido de Wotlk.|r", player->GetName().c_str());
+                        ChatHandler(player->GetSession()).PSendSysMessage(ACORE_STRING_TBC, player->GetName().c_str());
                     }
                     else
                     {
-                        ChatHandler(player->GetSession()).PSendSysMessage("|cffff0000Ya tienes este título.|r");
+                        ChatHandler(player->GetSession()).PSendSysMessage(ACORE_STRING_TITLE);
                     }
                 }
                 else
                 {
-                    ChatHandler(player->GetSession()).PSendSysMessage("|cffff0000Error: No se encontró el título con ID {}.|r", RewardTitleLevel70);
+                    ChatHandler(player->GetSession()).PSendSysMessage(ACORE_STRING_ERROR_TITLE, RewardTitleLevel70);
                 }
             }
 
@@ -132,16 +153,16 @@ public:
                     if (!player->HasTitle(titleEntry))
                     {
                         player->SetTitle(titleEntry);
-                        ChatHandler(player->GetSession()).PSendSysMessage("|cff00ff00¡Felicidades, |cffffd700{} |cff00ff00!Has completado el desafio Hardcore y has recibido un título especial. Relajaos, tomad un cerveza y disfrutad del contenido de Wotlk.|r", player->GetName().c_str());
+                        ChatHandler(player->GetSession()).PSendSysMessage(ACORE_STRING_WOTLK, player->GetName().c_str());
                     }
                     else
                     {
-                        ChatHandler(player->GetSession()).PSendSysMessage("|cffff0000Ya tienes este título.|r");
+                        ChatHandler(player->GetSession()).PSendSysMessage(ACORE_STRING_TITLE);
                     }
                 }
                 else
                 {
-                    ChatHandler(player->GetSession()).PSendSysMessage("|cffff0000Error: No se encontró el título con ID {}.|r", RewardTitleLevel80);
+                    ChatHandler(player->GetSession()).PSendSysMessage(ACORE_STRING_ERROR_TITLE, RewardTitleLevel80);
                 }
             }
         }
@@ -154,7 +175,7 @@ public:
             Group* group = player->GetGroup();
             if (group)
             {
-                ChatHandler(player->GetSession()).PSendSysMessage("Saliendo del grupo... Ya no puedes formar parte de los vivos.");
+                ChatHandler(player->GetSession()).PSendSysMessage(ACORE_STRING_LEAVE_GROUP);
                 group->RemoveMember(player->GetGUID());
             }
         }
@@ -164,7 +185,7 @@ public:
     {
         if (getHardcoreEnabled(player))
         {
-            ChatHandler(player->GetSession()).PSendSysMessage("Serás un fantasma para siempre...");
+            ChatHandler(player->GetSession()).PSendSysMessage(ACORE_STRING_GHOST);
             return;
         }
     }
@@ -188,7 +209,7 @@ public:
                 << "|cffff0000!";
 
             // Mensaje para el jugador muerto
-            ChatHandler(killed->GetSession()).PSendSysMessage("Un jugador te mató... en modo hardcore.");
+            ChatHandler(killed->GetSession()).PSendSysMessage(ACORE_STRING_PLAYER_KILLED_HARDCORE);
 
             WorldPacket data(SMSG_NOTIFICATION, (deathplayer.str().size() + 1));
             data << deathplayer.str();
@@ -218,7 +239,7 @@ public:
                 << "|cffff0000!";
 
             // Mensaje para el jugador muerto
-            ChatHandler(killed->GetSession()).PSendSysMessage("Moriste durante una sesión en modo hardcore... Problemas de habilidad.");
+            ChatHandler(killed->GetSession()).PSendSysMessage(ACORE_STRING_KILLED_HARDCORE);
 
             WorldPacket data(SMSG_NOTIFICATION, (deathplayer.str().size() + 1));
             data << deathplayer.str();
@@ -241,15 +262,15 @@ public:
     void OnPlayerResurrect(Player* player, float /*restore_percent*/, bool /*applySickness*/) override
     { // We keep this function just to prevent some exploits for reviving
 
-        // En la arena o en el campo de batalla, la exenci贸n debe concederse antes de la condici贸n getHardcoreEnabled.
+        // En la arena o en el campo de batalla, la exepcion debe concederse antes de la condicion getHardcoreEnabled.
         if (player->IsGameMaster() || player->GetMap()->IsBattlegroundOrArena())
             return;
 
         if (getHardcoreEnabled(player))
         {
-            ChatHandler(player->GetSession()).PSendSysMessage("No puedes ser revivido. Mejora tus habilidades.");
+            ChatHandler(player->GetSession()).PSendSysMessage(ACORE_STRING_NOT_REVIVE);
             player->KillPlayer();
-            player->GetSession()->KickPlayer("El jugador murió durante una sesión en modo hardcore.");
+            player->GetSession()->KickPlayer(ACORE_STRING_PLAYER_DEATH_HARDCORE);
             return;
         }
     }
@@ -303,7 +324,7 @@ public:
     {
         if (getHardcoreEnabled(player) && player->isDead())
         {
-            ChatHandler(player->GetSession()).PSendSysMessage("No puedes invitar jugadores a un grupo mientras estés muerto.");
+            ChatHandler(player->GetSession()).PSendSysMessage(ACORE_STRING_NOT_INVITED_GROUP);
             return false;
         }
         return true;
@@ -313,7 +334,7 @@ public:
     {
         if (getHardcoreEnabled(player) && player->isDead())
         {
-            ChatHandler(player->GetSession()).PSendSysMessage("No puedes ser parte de un grupo.");
+            ChatHandler(player->GetSession()).PSendSysMessage(ACORE_STRING_NOT_GROUP);
             return false;
         }
         return true;
@@ -378,7 +399,7 @@ public:
                 case CMSG_MAIL_TAKE_ITEM:
                 case CMSG_MAIL_TAKE_MONEY:
                 case CMSG_MAIL_RETURN_TO_SENDER:
-                    ChatHandler(player->GetSession()).PSendSysMessage("No puedes usar tu bolsa de correo.");
+                    ChatHandler(player->GetSession()).PSendSysMessage(ACORE_STRING_MAIL);
                     return false;
 
                 // ah
@@ -388,7 +409,7 @@ public:
                 case CMSG_AUCTION_PLACE_BID:
                 case CMSG_AUCTION_REMOVE_ITEM:
                 case CMSG_AUCTION_SELL_ITEM:
-                    ChatHandler(player->GetSession()).PSendSysMessage("No puedes usar la subasta.");
+                    ChatHandler(player->GetSession()).PSendSysMessage(ACORE_STRING_AUCTIONHOUSE);
                     return false;
 
                 // guild
@@ -398,7 +419,7 @@ public:
                 case CMSG_GUILD_BANK_WITHDRAW_MONEY:
                 case CMSG_GUILD_BANK_BUY_TAB:
                 case CMSG_GUILD_BANK_UPDATE_TAB:
-                    ChatHandler(player->GetSession()).PSendSysMessage("No puedes usar el banco de la hermandad.");
+                    ChatHandler(player->GetSession()).PSendSysMessage(ACORE_STRING_GUILD_BANK);
                     return false;
                 case SMSG_PRE_RESURRECT: // No idea
                 case CMSG_HEARTH_AND_RESURRECT: // No idea
@@ -407,7 +428,7 @@ public:
                 case CMSG_RESURRECT_RESPONSE: // Someone reviving your corpse
                 case CMSG_SPIRIT_HEALER_ACTIVATE: // Spirit talking
                 case SMSG_SPIRIT_HEALER_CONFIRM: // Spirit reviving, keep both spirit packets
-                    ChatHandler(player->GetSession()).PSendSysMessage("No puedes ser revivido. Viaja como un fantasma o crea un nuevo héroe.");
+                    ChatHandler(player->GetSession()).PSendSysMessage(ACORE_STRING_GUILD_NOT_HERO);
                     return false;
                 case CMSG_GM_RESURRECT:
                     if (!sConfigMgr->GetOption<bool>("ModHardcoreGMCanResurrect.Enable", false))
