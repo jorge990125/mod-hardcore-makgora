@@ -159,7 +159,7 @@ public:
 
         // Mostrar mensaje de advertencia sobre los reinos Hardcore
         AddGossipItemFor(player, GOSSIP_ICON_CHAT, "|cFFFF0000¡Términos y condiciones!|r", GOSSIP_SENDER_MAIN, 1);
-        AddGossipItemFor(player, GOSSIP_ICON_INTERACT_1, "Te damos la bienvenida a Pixie Hardcore.", GOSSIP_SENDER_MAIN, 1);
+        AddGossipItemFor(player, GOSSIP_ICON_INTERACT_1, "Te damos la bienvenida a Olympus Hardcore.", GOSSIP_SENDER_MAIN, 1);
         AddGossipItemFor(player, GOSSIP_ICON_INTERACT_1, "Los personajes que mueren en el reinos Hardcore no pueden resucitar en |cFFFF0000NINGÚN|r caso.", GOSSIP_SENDER_MAIN, 1);
         AddGossipItemFor(player, GOSSIP_ICON_INTERACT_1, "Asistencia al cliente no puede restaurar personajes Hardcore muertos.", GOSSIP_SENDER_MAIN, 1);
         AddGossipItemFor(player, GOSSIP_ICON_INTERACT_1, "Si accedes a jugar en estos reinos, aceptas que la muerte de tu personaje será permanente.", GOSSIP_SENDER_MAIN, 1);
@@ -167,7 +167,7 @@ public:
         AddGossipItemFor(player, GOSSIP_ICON_INTERACT_1, "Las muertes en actividades JcJ consensuadas (como Duelo a muerte o el JcJ voluntario) forman parte del juego.", GOSSIP_SENDER_MAIN, 1);
         AddGossipItemFor(player, GOSSIP_ICON_INTERACT_1, "Debes mostrar una actitud positiva y no participar en situaciones de acoso, odio o abuso.", GOSSIP_SENDER_MAIN, 1);
         AddGossipItemFor(player, GOSSIP_ICON_INTERACT_1, "Acostúmbrate a un juego peligroso, pero es un juego y vienes a pasártelo bien. Pórtate de una forma amistosa.", GOSSIP_SENDER_MAIN, 1);
-        AddGossipItemFor(player, GOSSIP_ICON_INTERACT_1, "Pixie se reserva el derecho a tomar medidas estrictas frente a comportamientos deliberadamente negativos en estos reinos.", GOSSIP_SENDER_MAIN, 1);
+        AddGossipItemFor(player, GOSSIP_ICON_INTERACT_1, "Olympus se reserva el derecho a tomar medidas estrictas frente a comportamientos deliberadamente negativos en estos reinos.", GOSSIP_SENDER_MAIN, 1);
         AddGossipItemFor(player, GOSSIP_ICON_INTERACT_1, "Cualquier jugador que cause la muerte de un personaje de forma consciente y deliberada fuera de un contexto de JcJ consensuado podrá ver intervenidas sus cuentas.", GOSSIP_SENDER_MAIN, 1);
 
         // Agregar opciones de aceptación y rechazo
