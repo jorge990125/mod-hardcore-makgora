@@ -368,7 +368,7 @@ class HardModeServerScript : ServerScript
 public:
     HardModeServerScript() : ServerScript("mod-hardcore") {}
 
-    bool CanPacketReceive(WorldSession* session, WorldPacket& packet) override
+    bool CanPacketReceive(WorldSession* session, WorldPacket const& packet) override
     {
         if (!sConfigMgr->GetOption<bool>("ModHardcore.Enable", false))
         {
