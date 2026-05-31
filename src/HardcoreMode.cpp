@@ -259,7 +259,7 @@ public:
         }
     }
 
-    void OnPlayerResurrect(Player* player, float /*restore_percent*/, bool /*applySickness*/) override
+    void OnPlayerResurrect(Player* player, float /*restore_percent*/, bool& /*applySickness*/) override
     { // We keep this function just to prevent some exploits for reviving
 
         // En la arena o en el campo de batalla, la exepcion debe concederse antes de la condicion getHardcoreEnabled.
