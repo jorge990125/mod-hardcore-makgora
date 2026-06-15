@@ -3,8 +3,8 @@
  */
 
 // From SC
-void AddSC_mod_harcore();
-void AddSC_mod_harcore_npc();
+void AddSC_mod_hardcore();
+void AddSC_mod_hardcore_npc();
 void AddSC_makgora();
 
 // Add all
@@ -12,7 +12,7 @@ void AddSC_makgora();
 // additionally replace all '-' in the module folder name with '_' here
 void Addmod_hardcore_makgoraScripts()
 {
-    AddSC_mod_harcore();
-    AddSC_mod_harcore_npc();
+    AddSC_mod_hardcore();
+    AddSC_mod_hardcore_npc();
     AddSC_makgora();
 }

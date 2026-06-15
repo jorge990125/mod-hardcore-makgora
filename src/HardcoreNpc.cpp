@@ -247,7 +247,7 @@ public:
     }
 };
 
-void AddSC_mod_harcore_npc()
+void AddSC_mod_hardcore_npc()
 {
     new npc_hardcore_ranking();
     new npc_hardcore_warning();

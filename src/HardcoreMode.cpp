@@ -443,7 +443,7 @@ public:
 };
 
 
-void AddSC_mod_harcore()
+void AddSC_mod_hardcore()
 {
     new HardcoreMode_Announcer();
     new HardcoreMode();
