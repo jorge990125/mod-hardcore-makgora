@@ -270,7 +270,10 @@ public:
         {
             ChatHandler(player->GetSession()).PSendSysMessage(ACORE_STRING_NOT_REVIVE);
             player->KillPlayer();
-            player->GetSession()->KickPlayer(ACORE_STRING_PLAYER_DEATH_HARDCORE);
+
+            ChatHandler(player->GetSession()).PSendSysMessage(ACORE_STRING_PLAYER_DEATH_HARDCORE);
+
+            player->GetSession()->KickPlayer(true);
             return;
         }
     }
